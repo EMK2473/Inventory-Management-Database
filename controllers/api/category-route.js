@@ -37,6 +37,8 @@ router.get("/:id", async (req, res) => {
       res.status(500).json({ message: "ERROR finding ID!" });
     }
 
+// post new category
+// Test Thursday
 router.post("/", async (req, res) => {
   try {
     const newCategory = await Category.create(req.body);
