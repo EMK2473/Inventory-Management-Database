@@ -34,14 +34,17 @@ Product.init(
       isPremium: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
+        defaultValue: false,
       },
       isFrozen: {
         type: DataTypes.BOOLEAN,
-        allowNull: false
+        allowNull: false,
+        defaultValue: false,
       },
       isOnSale: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
+        defaultValue: false,
       },
     category_id: {
         type: DataTypes.INTEGER,
