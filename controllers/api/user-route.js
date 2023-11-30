@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Product, Category } = require("../../models");
 
 // get all users
 router.get("/", async (req, res) => {
@@ -15,15 +15,15 @@ router.get("/", async (req, res) => {
 
 // get user by id
 router.get("/:id", async (req, res) => {
-    try {
-      const userData = await User.findByPk(req.params.id);
-      console.log("userData:", userData);
-      res.json({ users: userData });
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
-  });
+  try {
+    const userData = await User.findByPk(req.params.id);
+    console.log("userData:", userData);
+    res.json({ users: userData });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 // post new user
 router.post("/", async (req, res) => {
@@ -42,7 +42,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {  
+router.delete("/:id", async (req, res) => {
   try {
     const deletedUser = await User.destroy({
       where: { id: req.params.id },
