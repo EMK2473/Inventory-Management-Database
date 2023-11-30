@@ -84,4 +84,22 @@ router.post("/", async (req, res) => {
     res.status(400).json({ message: "ERROR creating new product!" });
   }
 });
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const productToDelete = await Product.findByPk(req.params.id);
+    if (!productToDelete) {
+      return res.status(404).json({ message: "ERROR ID not found!" });
+    }
+    await Product.destroy({
+      where: { id: req.params.id },
+    });
+    res.status(200).json({
+      product: productToDelete,
+      message: `Product: ${productToDelete.product_name} deleted!`,
+    });
+  } catch (err) {
+    res.status(500).json({ message: "ERROR Failed to delete product!" });
+  }
+});
 module.exports = router;
