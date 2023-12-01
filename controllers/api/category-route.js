@@ -37,7 +37,7 @@ router.get("/:id", async (req, res) => {
       res.status(500).json({ message: "ERROR finding ID!" });
     }
   });
-  
+
 // post new category
 // Test Thursday
 router.post("/", async (req, res) => {
@@ -49,25 +49,24 @@ router.post("/", async (req, res) => {
   }
 });
 
+// put/update existing Category
 router.put("/:id", async (req, res) => {
   try {
-    const [numOfUpdatedRows] = await Category.update(req.body, {
-      where: { id: req.params.id },
+    console.log("Request Body:", req.body);
+    console.log("Category ID:", req.params.id);
+    const [numOfUpdatedRows, updatedCategories] = await Category.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+      returning: true,
     });
-    if (numOfUpdatedRows === 0) {
-      return res.status(404).json({ message: "ERROR; Category and/or ID not found!" });
-    }
-    const updatedCategory = await Category.findByPk(req.params.id); // query the updated category separately
-    if (!updatedCategory) {
-      return res.status(404).json({ message: "ERROR; Updated category not found!" });
-    }
-    res.status(200).json({
-      category: updatedCategory,
-      message: `Category ${updatedCategory.category_name} Updated!`,
-    });
+    console.log("Generated SQL Query:", Category.sequelize.query);
+    console.log("Number of Updated Rows:", numOfUpdatedRows);
+    console.log("Updated Categories:", updatedCategories);
+    return res.status(200).json(updatedCategories);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: "ERROR updating Category!" });
+    return res.status(400).json(err);
   }
 });
 

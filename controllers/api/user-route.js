@@ -57,4 +57,41 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// put/update existing User
+router.put("/:id", async (req, res) => {
+  try {
+    console.log("Request Body:", req.body);
+    console.log("User ID:", req.params.id);
+    const [numOfUpdatedRows, updatedUsers] = await User.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+      returning: true,
+    });
+    console.log("Generated SQL Query:", User.sequelize.query);
+    console.log("Number of Updated Rows:", numOfUpdatedRows);
+    console.log("Updated Users:", updatedUsers);
+    return res.status(200).json(updatedUsers);
+  } catch (err) {
+    console.error(err);
+    return res.status(400).json(err);
+  }
+});
+
+// delete product
+router.delete("/:id", async (req, res) => {
+  try {
+    const deletedProduct = await Product.destroy({
+      where: { id: req.params.id },
+    });
+    if (!deletedProduct) {
+      res.status(404).json({ message: "No Product found!" });
+      return;
+    }
+    res.status(200).json(deletedProduct);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
