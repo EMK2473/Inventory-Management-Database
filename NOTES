@@ -1,0 +1,29 @@
+ToDo:
+Anyone:
+remove delete/edit category/tag files
+connect/test front end handlebars
+
+
+Eric:
+Flesh out models/queries for database
+Add employee id/position
+
+Chris:
+4 Images for Slick
+Center and Sync Slick
+
+Nate:
+homepage.handlebars
+product.handlebars
+editProduct javascript
+signup javascript event listner
+
+
+
+
+
+We need: 
+Category Handlebar for each category
+has 4 Images
+each image with have <a href=/category
+Products handlebars
