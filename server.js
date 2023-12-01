@@ -5,13 +5,12 @@ const routes = require("./controllers");
 const sequelize = require("./config/connection");
 const exphbs = require("express-handlebars");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
-const hbs = exphbs.create({ helpers: require("./utils/helper") });
+const hbs = exphbs.create({ helpers: require("./utils/helper") }); // do we need?
 const app = express();
 const PORT = process.env.PORT || 3001;
 const handlebarsHelpers = require('./utils/helper'); 
 const Handlebars = require('handlebars');
 Handlebars.registerHelper('eq', handlebarsHelpers.eq);
-
 
 // sess object
 const sess = {

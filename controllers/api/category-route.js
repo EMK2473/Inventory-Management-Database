@@ -36,7 +36,8 @@ router.get("/:id", async (req, res) => {
     } catch (err) {
       res.status(500).json({ message: "ERROR finding ID!" });
     }
-
+  });
+  
 // post new category
 // Test Thursday
 router.post("/", async (req, res) => {
@@ -88,5 +89,5 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json({ message: "ERROR deleting category!" });
   }
 });
-  });
+
 module.exports = router;
