@@ -30,7 +30,6 @@ router.post("/", async (req, res) => {
   try {
     const newUser = new User();
     newUser.username = req.body.username;
-    newUser.email = req.body.email;
     newUser.password = req.body.password;
     const userData = await newUser.save(); // we can use newUser.create() if needed, but this works
     // save() Validates this instance, and if the validation passes, persists it to the database.
