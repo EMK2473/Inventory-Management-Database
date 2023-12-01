@@ -10,6 +10,12 @@ const tagData = [
   {
     tag_name: "Low Stock",
   },
+  {
+    tag_name: "Has Bones",
+  },
+  {
+    tag_name: "Is Frozen",
+  }
 ];
 
 const seedTags = () => Tag.bulkCreate(tagData);

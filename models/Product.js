@@ -23,7 +23,15 @@ Product.init(
         isDecimal: true, 
       },
     },
-    stock: {
+    caseLBs: {
+      type: DataTypes.INTEGER, 
+      allowNull: false, 
+      defaultValue: 10,
+      validate: {
+        isNumeric: true, 
+      },
+    },
+    casesInStock: {
         type: DataTypes.INTEGER, 
         allowNull: false, 
         defaultValue: 10,
@@ -31,22 +39,12 @@ Product.init(
           isNumeric: true, 
         },
       },
-      isPremium: {
-        type: DataTypes.BOOLEAN,
+      casePar: {
+        type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: false,
+        defaultValue: 10,
       },
-      isFrozen: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: false,
-      },
-      isOnSale: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: false,
-      },
-    category_id: {
+      category_id: {
         type: DataTypes.INTEGER,
         references: {
           model: "category", 
