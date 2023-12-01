@@ -15,7 +15,7 @@ const tagData = [
   },
   {
     tag_name: "Is Frozen",
-  }
+  },
 ];
 
 const seedTags = () => Tag.bulkCreate(tagData);

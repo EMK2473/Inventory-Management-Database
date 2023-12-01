@@ -46,7 +46,7 @@ app.use(routes);
 const startServer = async () => {
   try {
     await sequelize.sync({ force: false });
-    app.listen(PORT, () => console.log(`Loud and Clear on PORT ${PORT}`));
+    app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
   } catch (error) {
     console.error("ERROR syncing database:", error);
   }

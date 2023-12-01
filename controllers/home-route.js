@@ -5,15 +5,12 @@ const withAuth = require("../utils/withAuth");
 // get all categories and render main view
 router.get("/", async (req, res) => {
     try {
-      const categoryData = await Category.findAll({
-        include: [{ model: User, attributes: ["username"] }],
-      });
-  
-      const categories = categoryData.map((category) => category.get({ plain: true }));
-  
-      res.render("main", {
-        categories,
-        logged_in: req.session.logged_in,
+      // const categoryData = await Category.findAll({
+      //   include: [{ model: User, attributes: ["username"] }],
+      // });
+      // const categories = categoryData.map((category) => category.get({ plain: true }));
+      res.render("homepage", {
+        // categories,
       });
     } catch (err) {
       res.status(500).json(err);

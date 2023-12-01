@@ -11,6 +11,9 @@ Product.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+      validate: {
+        isNumeric: true, 
+      },
     },
     product_name: {
       type: DataTypes.STRING,
@@ -23,7 +26,12 @@ Product.init(
         isDecimal: true, 
       },
     },
-    caseLBs: {
+    unit: {
+      type: DataTypes.STRING, 
+      allowNull: true, 
+      defaultValue: "case",
+    },
+    stock: {
       type: DataTypes.INTEGER, 
       allowNull: false, 
       defaultValue: 10,
@@ -31,24 +39,16 @@ Product.init(
         isNumeric: true, 
       },
     },
-    casesInStock: {
-        type: DataTypes.INTEGER, 
-        allowNull: false, 
-        defaultValue: 10,
-        validate: {
-          isNumeric: true, 
-        },
+    par: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 10,
+    },
+    category_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "category", 
       },
-      casePar: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        defaultValue: 10,
-      },
-      category_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: "category", 
-        },
     }
   },
   {

@@ -8,7 +8,6 @@ router.get("/", async (req, res) => {
       const categories = await Category.findAll({
         include: [{ model: Product }],
       });
-  
       if (categories.length === 0) {
         return res.status(404).json({ message: "ERROR; No categories found!" });
       }
@@ -39,7 +38,6 @@ router.get("/:id", async (req, res) => {
   });
 
 // post new category
-// Test Thursday
 router.post("/", async (req, res) => {
   try {
     const newCategory = await Category.create(req.body);
@@ -60,7 +58,6 @@ router.put("/:id", async (req, res) => {
       },
       returning: true,
     });
-    console.log("Generated SQL Query:", Category.sequelize.query);
     console.log("Number of Updated Rows:", numOfUpdatedRows);
     console.log("Updated Categories:", updatedCategories);
     return res.status(200).json(updatedCategories);
@@ -70,7 +67,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-
+// delete category
 router.delete("/:id", async (req, res) => {
   try {
     const categoryToDelete = await Category.findByPk(req.params.id);
