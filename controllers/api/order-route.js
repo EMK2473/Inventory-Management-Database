@@ -2,16 +2,17 @@ const router = require("express").Router();
 const { Order, Product, User, Category } = require("../../models");
 // const withAuth = require("../../utils/withAuth");
 
-
-
 // get all orders
 router.get("/", async (req, res) => {
   try {
     const orders = await Order.findAll({
-      attributes: ['id', 'status', 'quantity', 'user_id'],
+      attributes: ['id', 'user_id', 'status', 'quantity',],
       include: [
-        { model: User, attributes: ['username'] },
-        { model: Product, attributes: ['product_name'] }
+        { 
+          model: Product, 
+          attributes: ['stock', 'product_name', 'unit', 'par', 'price'],
+        },
+        { model: User, attributes: ['username'] }
       ],
     });
     if (orders.length === 0) {
@@ -78,7 +79,6 @@ router.put("/:id", async (req, res) => {
       },
       returning: true,
     });
-    console.log("Generated SQL Query:", Order.sequelize.query);
     console.log("Number of Updated Rows:", numOfUpdatedRows);
     console.log("Updated Orders:", updatedOrders);
     return res.status(200).json(updatedOrders);

@@ -41,6 +41,7 @@ router.post("/", async (req, res) => {
   }
 });
 
+// delete user by :id
 router.delete("/:id", async (req, res) => {
   try {
     const deletedUser = await User.destroy({
@@ -67,7 +68,6 @@ router.put("/:id", async (req, res) => {
       },
       returning: true,
     });
-    console.log("Generated SQL Query:", User.sequelize.query);
     console.log("Number of Updated Rows:", numOfUpdatedRows);
     console.log("Updated Users:", updatedUsers);
     return res.status(200).json(updatedUsers);
