@@ -72,20 +72,15 @@ router.put("/:id", async (req, res) => {
   try {
     console.log("Request Body:", req.body);
     console.log("Order ID:", req.params.id);
-
     const [numOfUpdatedRows, updatedOrders] = await Order.update(req.body, {
       where: {
         id: req.params.id,
       },
       returning: true,
     });
-
     console.log("Generated SQL Query:", Order.sequelize.query);
     console.log("Number of Updated Rows:", numOfUpdatedRows);
     console.log("Updated Orders:", updatedOrders);
-
-
-
     return res.status(200).json(updatedOrders);
   } catch (err) {
     console.error(err);
