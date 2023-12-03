@@ -26,7 +26,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // post new user
-router.post("/", async (req, res) => {
+router.post("/signup", async (req, res) => {
   try {
     const newUser = new User();
     newUser.username = req.body.username;
@@ -34,13 +34,47 @@ router.post("/", async (req, res) => {
     const userData = await newUser.save(); // we can use newUser.create() if needed, but this works
     // save() Validates this instance, and if the validation passes, persists it to the database.
     console.log("USERDATA", userData.id);
-    res.status(200).json(userData);
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true; 
+      res.status(200).json(userData);
+    });
   } catch (err) {
     res.status(400).json(err);
     console.log(err);
   }
 });
 
+// post user logging in at /login view
+router.post('/login', async (req, res) => {
+  try {
+    const userData = await User.findOne({ where: { username: req.body.username } });
+    if (!userData) {
+      res
+        .status(400)
+        .json({ message: "Incorrect username or password!" });
+      return;
+    }
+    const validPassword = await userData.checkPassword(req.body.password);
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: "Incorrect username or password!" });
+      return;
+    }
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      req.session.user = {
+        username: userData.username
+      };
+      res.status(200).json({ user: userData, message: "Logged in!" });
+    });
+    console.log('REQ SESSIONS:', req.session)
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 // delete user by :id
 router.delete("/:id", async (req, res) => {
   try {

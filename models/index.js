@@ -6,8 +6,11 @@ const Order = require("./Order");
 // const ProductTag = require("./ProductTag");
 
 // user has many prodcuts
+// user has many categories
+// user has many orders
 User.hasMany(Product, { foreignKey: "user_id" });
-
+User.hasMany(Category, { foreignKey: "user_id" });
+User.hasMany(Order, { foreignKey: "user_id" });
 // user has many categories
 User.hasMany(Category, { foreignKey: "user_id" });
 

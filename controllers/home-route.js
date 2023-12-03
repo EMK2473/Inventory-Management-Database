@@ -22,19 +22,29 @@ router.get("/signup", async (req, res) => {
   }
 });
 
-// // get all categories and render main view
-// router.get("/", async (req, res) => {
-//     try {
-//       // const categoryData = await Category.findAll({
-//       //   include: [{ model: User, attributes: ["username"] }],
-//       // });
-//       // const categories = categoryData.map((category) => category.get({ plain: true }));
-//       res.render("homepage", {
-//         // categories,
-//       });
-//     } catch (err) {
-//       res.status(500).json(err);
-//     }
-//   });
+// get all categories and render main view
+router.get("/", async (req, res) => {
+    try {
+      // const categoryData = await Category.findAll({
+      //   include: [{ model: User, attributes: ["username"] }],
+      // });
+      // const categories = categoryData.map((category) => category.get({ plain: true }));
+      res.render("homepage", {
+        // categories,
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
+  // get login view if not logged in, else redirect to dashboard
+router.get("/login", async (req, res) => {
+  req.session.logged_in ? res.redirect("/dashboard") : res.render("login");
+});
+
+// get sign up view if not logged in, else redirect to dashboard
+router.get("/signup", async (req, res) => {
+  req.session.logged_in ? res.redirect("/dashboard") : res.render("signup");
+});
 
 module.exports = router;
