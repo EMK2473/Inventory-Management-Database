@@ -11,23 +11,19 @@
       />
     </div>
     <div class="mb-3">
-      <label for="employeeId" class="form-label">Employee ID Number:</label>
-      <input
-        type="text"
-        class="form-control"
-        id="employeeId"
-        placeholder="Employee ID"
-      />
-    </div>
-    <div class="mb-3">
       <label for="password" class="form-label">Password:</label>
       <input
         type="password"
         class="form-control"
         id="password"
         placeholder="Password must be over (8) Characters long"
+        autocomplete="new-password"
       />
     </div>
     <button type="submit" class="btn btn-primary">Sign Up</button>
+       <div class="mb-6">
+        <br>
+            <p>Already signed up? <a href="/login">Login here</a></p>
+        </div>
   </form>
 </main>
