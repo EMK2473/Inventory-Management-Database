@@ -25,11 +25,13 @@ router.get("/signup", async (req, res) => {
 // get all categories and render main view
 router.get("/", async (req, res) => {
     try {
-      // const categoryData = await Category.findAll({
-      //   include: [{ model: User, attributes: ["username"] }],
-      // });
-      // const categories = categoryData.map((category) => category.get({ plain: true }));
-      res.render("homepage", {
+      const categoryData = await Category.findAll({
+        include: [{ model: Product, attributes: ["product_name", "price", "stock", "par", "unit" ] }],
+      });
+      const category = categoryData.map((product) => product.get({ plain: true }));
+      console.log(categoryData)
+      res.render("categories", {
+        category,
         logged_in: req.session.logged_in,
       });
     } catch (err) {

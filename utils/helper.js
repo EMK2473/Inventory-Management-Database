@@ -2,6 +2,12 @@ module.exports = {
     eq: function (a,b) {
       return a===b
     },
+    lt: function (a,b){
+      return a < b
+    },
+    gt: function (a,b){
+      return a > b
+    },
     format_time: (date) => {
       return date.toLocaleTimeString();
       },

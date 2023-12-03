@@ -11,6 +11,8 @@ const PORT = process.env.PORT || 3001;
 const handlebarsHelpers = require('./utils/helper'); 
 const Handlebars = require('handlebars');
 Handlebars.registerHelper('eq', handlebarsHelpers.eq);
+Handlebars.registerHelper('lt', handlebarsHelpers.lt);
+Handlebars.registerHelper('gt', handlebarsHelpers.gt);
 
 // sess object
 const sess = {
