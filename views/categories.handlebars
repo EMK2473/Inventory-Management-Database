@@ -1,31 +1,31 @@
 <main class="container mt-5">
   {{#if logged_in}}
-    <form class="new-comment-form mb-3">
+    {{!-- <form class="new-comment-form mb-3">
       <div class="mb-3">
         <label for="comment" class="form-label">New Order:</label>
       </div>
       <div class="text-center">
     <button type="submit" class="btn btn-primary">Order <i class="bi bi-arrow-up-square"></i></button>
     </div>
-    </form>
+    </form> --}}
     <div class="dashboard-background">
-        <div class="col">
+    <div class="col-md-4">
   <h2>Categories:</h2>
-<div class="col-md-4 text-center">
+{{!-- <div class="col-md-4"> --}}
      {{#each category}}
         <div class="card mb-3">
           <div class="card-header">
-            <h2 class="card-title text-center">
+            <h2 class="card-title">
               <h3>{{category_name}}</h3>
             </h2>
           </div>
           <div class="card-body text-dark post-background">
             {{#each products}}
-        <div class="product mb-3">
-          <p><h5>Product Name: {{product_name}}</h5></p>
-          <p><h6>Price:</h6> ${{price}}</p>
-          <p><h6>Stock</h6> {{stock}}</p> {{#if (lt stock par)}} <p>LOW STOCK</p>{{/if}}{{#if (gt stock par)}} <p>OVERSTOCKED</p>{{/if}}
-          <p><h6>Par:</h6> {{par}}</p>
+        <div id="product" class="product mb-3" style="border: 1px solid #ccc; padding: 10px;">
+          <p><h5>{{product_name}}</h5>
+          <h6>Price:${{price}} per {{unit}}</h6> 
+          <h6>Par:{{par}}</h6>
+          <h6>Stock:{{stock}} {{#if (lt stock par)}} <p style="color:red;"><b>LOW STOCK</b></p>{{/if}}{{#if (gt stock par)}} <p style="color:green"><b>OVERSTOCKED</b></p>{{/if}}
         </div>
       {{/each}}
       </div>
