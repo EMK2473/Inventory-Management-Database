@@ -1,0 +1,30 @@
+<main class="container mt-5">
+  {{#if logged_in}}
+    <h1>Products</h1>
+    <div class="row">
+      {{#each category}}
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title">{{category_name}}</h5>
+            </div>
+            <div class="card-body">
+              {{#each products}}
+                <div class="product mb-3" style="border: 1px solid #ccc; padding: 10px;">
+                  <h6>{{product_name}}</h6>
+                  <p>Price: ${{price}} / {{unit}}</p>
+                  <p>Par: {{par}}</p>
+                  <p>Stock: {{stock}}</p>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <div class="col-md-3 mb-3 text-center">
+      <p>Please Login</p>
+    </div>
+  {{/if}}
+</main>
