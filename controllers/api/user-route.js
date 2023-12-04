@@ -31,8 +31,7 @@ router.post("/signup", async (req, res) => {
     const newUser = new User();
     newUser.username = req.body.username;
     newUser.password = req.body.password;
-    const userData = await newUser.save(); // we can use newUser.create() if needed, but this works
-    // save() Validates this instance, and if the validation passes, persists it to the database.
+    const userData = await newUser.save();
     console.log("USERDATA", userData.id);
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -75,6 +74,7 @@ router.post('/login', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
 // delete user by :id
 router.delete("/:id", async (req, res) => {
   try {
@@ -127,6 +127,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// post logout
 router.post('/logout', (req, res) => {
   req.session.logged_in
     ? req.session.destroy(() => res.status(204).end())

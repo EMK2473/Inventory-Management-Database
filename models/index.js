@@ -30,6 +30,7 @@ Order.belongsTo(Product, { foreignKey: "product_id" });
 Order.belongsToMany(Product, { through: OrderItem });
 Order.hasMany(OrderItem, { foreignKey: "order_id" });
 
+// finish developing orderItems
 OrderItem.belongsTo(Order, { foreignKey: "order_id" });
 
 
