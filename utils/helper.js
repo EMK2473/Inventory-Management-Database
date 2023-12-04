@@ -1,4 +1,7 @@
 module.exports = {
+  dif: function (a,b) {
+    return a - b
+  },
     eq: function (a,b) {
       return a===b
     },

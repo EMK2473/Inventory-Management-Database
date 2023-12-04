@@ -13,6 +13,7 @@ const Handlebars = require('handlebars');
 Handlebars.registerHelper('eq', handlebarsHelpers.eq);
 Handlebars.registerHelper('lt', handlebarsHelpers.lt);
 Handlebars.registerHelper('gt', handlebarsHelpers.gt);
+Handlebars.registerHelper('dif', handlebarsHelpers.dif);
 
 // sess object
 const sess = {
