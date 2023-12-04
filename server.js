@@ -14,6 +14,7 @@ Handlebars.registerHelper('eq', handlebarsHelpers.eq);
 Handlebars.registerHelper('lt', handlebarsHelpers.lt);
 Handlebars.registerHelper('gt', handlebarsHelpers.gt);
 Handlebars.registerHelper('dif', handlebarsHelpers.dif);
+const ItemPile = require('itempile');
 
 // sess object
 const sess = {
@@ -54,5 +55,6 @@ const startServer = async () => {
     console.error("ERROR syncing database:", error);
   }
 };
+
 
 startServer();

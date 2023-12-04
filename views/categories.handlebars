@@ -3,14 +3,14 @@
     <div class="dashboard-background">
       <div class="row">
         {{#each category}}
-          <div class="col-md-3 mb-3">
+          <div class="col-md-6 mb-3">
             <div class="card">
               <div class="card-header">
                 <h2 class="card-title">
                   <h3>{{category_name}}</h3>
                 </h2>
               </div>
-              <div class="card-body text-dark post-background">
+              <div class="card-body text-dark post-background multiple-items">
                 {{#each products}}
                   <div class="product mb-3" style="border: 1px solid #ccc; padding: 10px;">
                     <p><h5>{{product_name}}</h5>

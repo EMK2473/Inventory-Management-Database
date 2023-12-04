@@ -7,14 +7,15 @@
     "express-handlebars": "^5.2.0",
     "express-session": "^1.17.1",
     "handlebars": "^4.7.6",
+    "itempile": "^2.0.0",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.29.3"
+    "sequelize": "^6.29.3",
+    "slick-carousel": "^1.8.1"
   },
   "name": "inventory-management-database",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "devDependencies": {},
   "scripts": {
     "sequelize": "sequelize",
     "test": "echo \"Error: no test specified\" && exit 1",
