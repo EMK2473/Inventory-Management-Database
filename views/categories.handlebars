@@ -14,15 +14,19 @@
                 {{#each products}}
                   <div class="product mb-3" style="border: 1px solid #ccc; padding: 10px;">
                     <p><h5>{{product_name}}</h5>
-                    <h6>Price: ${{price}} per {{unit}}</h6> 
-                    <h6>Stock: {{stock}}{{#if (lt stock par)}} <p style="color:red;"><i class="bi bi-exclamation-octagon"></i><b style="font-size:8px"> LOW STOCK</b></p>{{/if}}{{#if (gt stock par)}} <p style="color:rgb(199, 201, 74)"><i class="bi bi-exclamation-octagon-fill"></i><b style="font-size:10px"> Over Par </b></p>{{/if}}{{#if (eq stock par)}}<p style="color:rgb(10, 150, 5)"><i class="bi bi-check-circle-fill"></i></p>{{/if}}
+                    <h6>Price: ${{price}} / {{unit}}</h6> 
                     <h6>Par: {{par}}</h6>
+                    <h6>Stock: {{stock}}{{#if (lt stock par)}} <p style="color:red;"><i class="bi bi-exclamation-octagon"></i><b> LOW STOCK</b></p>{{/if}}{{#if (gt stock par)}} <p style="color:rgb(199, 201, 74)"><i class="bi bi-exclamation-octagon-fill"></i><b> OVER PAR</b></p>{{/if}}
                   </div>
                 {{/each}}
               </div>
             </div>
           </div>
         {{/each}}
+      </div>
+       {{else}}
+      <div class="col-md-3 mb-3 text-center">
+        <p>Please Login</p>
       </div>
   {{/if}}
 </main>
