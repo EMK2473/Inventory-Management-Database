@@ -1,3 +1,9 @@
+// decide and implement employee id?
+// could verify if admin or not
+
+
+
+
 const employeeSignupFormHandler = async (event) => {
     event.preventDefault();
 
