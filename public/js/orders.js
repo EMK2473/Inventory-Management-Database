@@ -26,6 +26,6 @@ async function updateProduct(event) {
   }
 }
 
-document
-  .getElementById("adjust-parent")
-  .addEventListener("click", updateProduct);
+document.querySelectorAll(".adjust-parent").forEach(element => {
+  element.addEventListener("click", updateProduct);
+});
