@@ -12,14 +12,9 @@ router.get("/", async (req, res) => {
       return res.status(404).json({ message: "ERROR; No products found!" });
     }
     const productNames = products.map((product) => product.product_name);
-    res.status(200).json({
-      products: products,
-      message: `Products: [${productNames.join(", ")}] found! [${
-        productNames.length
-      }]`,
-    });
+    res.status(200).end()
   } catch (err) {
-    res.status(500).json({ message: "ERROR Products not found!" });
+    res.status(500).json(err);
   }
 });
 
@@ -36,7 +31,7 @@ router.get("/:id", async (req, res) => {
           message: `Product ${productID.product_name} found!`,
         });
   } catch (err) {
-    res.status(500).json({ message: "ERROR Product ID not found!" });
+    res.status(500).json(err);
   }
 });
 
@@ -44,10 +39,9 @@ router.get("/:id", async (req, res) => {
 router.put("/:id", async (req, res) => {  
   console.log(req.body)
   try {
-    req.body.stock ? await Product.increment('stock', { by: req.body.stock, where: { id: req.params.id }, returning: true,}) : 
-    await Product.update(req.body, {
-      where: { id: req.params.id },
-    });
+    req.body.stock ? 
+    await Product.increment('stock', { by: req.body.stock, where: { id: req.params.id }, returning: true,}) : 
+    await Product.update(req.body, { where: { id: req.params.id },});
     res.status(200).end();
   } catch (err) {
     res.status(500).json(err);
