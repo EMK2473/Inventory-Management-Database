@@ -40,7 +40,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// put/update existing product
+// put/update existing product stock increment
 router.put("/:id/:value", async (req, res) => {
   try {
     console.log(req.params.value)
@@ -52,6 +52,19 @@ router.put("/:id/:value", async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+router.put("/:id/:value", async (req, res) => {
+  try {
+    console.log(req.params.value)
+    const product = await Product.increment('stock', { by: req.params.value, where: { id: req.params.id }, returning: true,});
+    console.log("PRODUCT", product)
+    res.status(200).end();
+  } catch (err) {
+    console.error(err);
+    res.status(400).json(err);
+  }
+});
+
 
 // post new product
 router.post("/", async (req, res) => {
