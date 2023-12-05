@@ -34,11 +34,11 @@ User.init(
         len: [8],
       },
     },
-    isManager: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: true,
-    },
+    // isManager: {
+    //   type: DataTypes.BOOLEAN,
+    //   allowNull: false,
+    //   defaultValue: true,
+    // },
   },
   {
     hooks: {
