@@ -31,11 +31,15 @@ router.post("/signup", async (req, res) => {
     const newUser = new User();
     newUser.username = req.body.username;
     newUser.password = req.body.password;
+    newUser.isManager = req.body.isManager;
     const userData = await newUser.save();
     console.log("USERDATA", userData.id);
     req.session.save(() => {
       req.session.user_id = userData.id;
-      req.session.logged_in = true; 
+      req.session.logged_in = true;
+      if (newUser.isManager) {
+        req.session.isManager = true;
+      }
       res.status(200).json(userData);
     });
   } catch (err) {
@@ -67,6 +71,10 @@ router.post('/login', async (req, res) => {
       req.session.user = {
         username: userData.username
       };
+      const isManager = userData.isManager;
+      if (isManager) {
+        req.session.isManager = true;
+      }
       res.status(200).json({ user: userData, message: "Logged in!" });
     });
     console.log('REQ SESSIONS:', req.session)
