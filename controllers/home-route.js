@@ -41,14 +41,14 @@ router.get("/", async (req, res) => {
 
 // get all products at orders.handelbars
 // not working, finish development 
-router.get("/orders", async (req, res) => {
+router.get("/adjust", async (req, res) => {
   try {
     const categoryData = await Category.findAll({
       include: [{ model: Product, attributes: ["product_name", "price", "stock", "par", "unit", "id" ] }],
     });
     const category = categoryData.map((product) => product.get({ plain: true }));
     console.log(categoryData)
-    res.render("orders", {
+    res.render("inventory", {
       category,
       logged_in: req.session.logged_in,
     });
