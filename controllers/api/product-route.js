@@ -49,7 +49,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // post new product
-router.post("/", async (req, res) => {
+router.post("/new", async (req, res) => {
   try {
     const product = await Product.create(req.body);
     res
