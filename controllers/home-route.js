@@ -58,14 +58,14 @@ router.get("/adjust", async (req, res) => {
 });
 
 //
-router.get("/editProduct", async (req, res) => {
+router.get("/new", async (req, res) => {
   try {
     const categoryData = await Category.findAll({
       include: [{ model: Product, attributes: ["product_name", "price", "stock", "par", "unit", "id" ] }],
     });
     const category = categoryData.map((product) => product.get({ plain: true }));
     console.log(categoryData)
-    res.render("editProduct", {
+    res.render("new", {
       category,
       logged_in: req.session.logged_in,
     });
