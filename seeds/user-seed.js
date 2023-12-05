@@ -1,15 +1,32 @@
-const { User } = require("../models");
+const { User, Managers } = require("../models");
 
 const userData = [
   {
-    username: "Manager1",
+    username: "User1",
     password: "Password",
   },
   {
-    username: "Manager2",
+    username: "User2",
+    password: "Password",
+  },
+];
+
+const managerData = [
+  {
+    managerID: 1,
+    username: "manager1",
+    password: "Password",
+  },
+  {
+    managerID: 2,
+    username: "manager2",
     password: "Password",
   },
 ];
 
 const seedUsers = () => User.bulkCreate(userData);
-module.exports = seedUsers;
+const seedManagers = () => Managers.bulkCreate(managerData);
+module.exports = {
+  seedUsers,
+  seedManagers,
+};
