@@ -1,47 +1,68 @@
+<main class="container mt-8">
+<div class="col-md-6">
+      <h1>New Product Form</h1>
+      <form method="post" id="product-form">
+        <div class="mb-3">
+          <label for="product_name" class="form-label">Product Name:</label>
+          <input type="text" class="form-control" id="product_name" required>
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">Price:</label>
+          <input type="text" class="form-control" id="price" name="price" required>
+        </div>
+        <div class="mb-3">
+          <label for="unit" class="form-label">Unit:</label>
+          <input type="text" class="form-control" id="unit" name="unit">
+        </div>
+        <div class="mb-3">
+          <label for="stock" class="form-label">Stock:</label>
+          <input type="text" class="form-control" id="stock" name="stock" required>
+        </div>
+        <div class="mb-3">
+          <label for="par" class="form-label">Par:</label>
+          <input type="text" class="form-control" id="par" name="par" required>
+        </div>
+        <div class="mb-3">
+          <label for="category_id" class="form-label">Category ID:</label>
+          <input type="text" class="form-control" id="category_id" name="category_id" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
 
-<h1>New Category Form</h1>
+  <!-- Category IDs -->
+  <div class="col-md-6 mt-4">
+    <h2>Category IDs:</h2>
+    {{#each category}}
+      <div class="mb-1">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              {{category_name}}
+            </h2>
+            <h3>ID: {{id}}</h3>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
+<div class="row">
+    <!-- Category Form -->
+    <div class="col-md-6">
+      <h1>New Category Form</h1>
+      <form method="post" id="category-form">
+        <div class="mb-3">
+          <label for="category_name" class="form-label">Category Name:</label>
+          <input type="text" class="form-control" id="category_name" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+</main>
 
-<form method="post" id="category-form">
-  <label for="category_name">Category Name:</label>
-  <input type="text" id="category_name" required>
 
-  <br>
 
-  <button type="submit">Submit</button>
-</form>
 
-<h1>New Product Form</h1>
-<form method="post" id="product-form">
-  <label for="product_name">Product Name:</label>
-  <input type="text" id="product_name" required>
 
-  <br>
-
-  <label for="price">Price:</label>
-  <input type="text" id="price" name="price" required>
-
-  <br>
-
-  <label for="unit">Unit:</label>
-  <input type="text" id="unit" name="unit">
-
-  <br>
-
-  <label for="stock">Stock:</label>
-  <input type="text" id="stock" name="stock" required>
-
-  <br>
-
-  <label for="par">Par:</label>
-  <input type="text" id="par" name="par" required>
-
-  <br>
-
-  <label for="category_id">Category ID:</label>
-  <input type="text" id="category_id" name="category_id" required>
-
-  <br>
-
-  <button type="submit">Submit</button>
-</form>
 

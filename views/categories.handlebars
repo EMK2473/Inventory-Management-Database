@@ -1,5 +1,7 @@
 <main class="container mt-5">
-  {{#if logged_in}}
+        <div class="col-md-12 mb-3 text-center">
+        <p>Please <a class="nav-link" href="/login">Login</a></p>
+      </div>
     <div class="dashboard-background">
       <div class="row">
         {{#each category}}
@@ -15,11 +17,6 @@
                   <div class="product mb-3" style="border: 1px solid #ccc; padding: 10px;">
                     <p><h5>{{product_name}}</h5>
                     <h6>Price: ${{price}} / {{unit}}</h6> 
-                    <h6>Par: {{par}}</h6>
-                    <h6>Stock: {{stock}}
-                      {{#if (lt stock par)}} <p style="color:red;"><i class="bi bi-exclamation-octagon"></i><b> LOW STOCK</b></p>{{/if}}
-                      {{#if (gt stock par)}} <p style="color:rgb(199, 201, 74)"><i class="bi bi-exclamation-octagon-fill"></i><b> OVER PAR</b></p>{{/if}}
-                      {{#if (eq stock par)}} <p style="color:rgb(0, 255, 13);"><i class="bi bi-check-circle-fill"></i><b> On Par</b></p>{{/if}}
                   </div>
                 {{/each}}
               </div>
@@ -27,9 +24,4 @@
           </div>
         {{/each}}
       </div>
-       {{else}}
-      <div class="col-md-3 mb-3 text-center">
-        <p>Please <a class="nav-link" href="/login">Login</a></p>
-      </div>
-  {{/if}}
 </main>
