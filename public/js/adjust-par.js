@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const adjustButtons = document.querySelectorAll('.adjust-stock');
+    const adjustButtons = document.querySelectorAll('.adjust-par');
     adjustButtons.forEach(buttonElement => {
      buttonElement.addEventListener('click', async function (event) {
       const product_id = this.getAttribute('data-product-id');
