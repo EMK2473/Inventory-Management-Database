@@ -57,6 +57,25 @@ router.get("/orders", async (req, res) => {
   }
 });
 
+//
+router.get("/editProduct", async (req, res) => {
+  try {
+    const categoryData = await Category.findAll({
+      include: [{ model: Product, attributes: ["product_name", "price", "stock", "par", "unit", "id" ] }],
+    });
+    const category = categoryData.map((product) => product.get({ plain: true }));
+    console.log(categoryData)
+    res.render("editProduct", {
+      category,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
 // get login view if not logged in, else redirect to dashboard
 router.get("/login", async (req, res) => {
   req.session.logged_in ? res.redirect("/dashboard") : res.render("login");

@@ -26,3 +26,4 @@ const editProductFormHandler = async (event) => {
   if (editProductForm) {
     editProductForm.addEventListener('submit', editProductFormHandler);
   }
+

@@ -41,29 +41,12 @@ router.get("/:id", async (req, res) => {
 });
 
 // put/update existing product
-router.put("/:id", async (req, res) => {
+router.put("/:id/:value", async (req, res) => {
   try {
-    const [numOfUpdatedRows, product] = await Product.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-      returning: true,
-    });
-    if (numOfUpdatedRows === 0) {
-      return res
-        .status(404)
-        .json({ message: "ERROR; Product and/or ID not found!" });
-    }
-    const updatedProduct = await Product.findByPk(req.params.id); 
-    if (!updatedProduct) {
-      return res
-        .status(404)
-        .json({ message: "ERROR; Updated product not found!" });
-    }
-    res.status(200).json({
-      product: updatedProduct,
-      message: `Product ${updatedProduct.product_name} Updated!`,
-    });
+    console.log(req.params.value)
+    const product = await Product.increment('stock', { by: req.params.value, where: { id: req.params.id }, returning: true,});
+    console.log("PRODUCT", product)
+    res.status(200).end();
   } catch (err) {
     console.error(err);
     res.status(400).json(err);
