@@ -1,13 +1,29 @@
-// const ItemPile = require("itempile");
-// const { or } = require("sequelize");
-// let test = 100;
-// ItemPile.maxStackSize = 9999;
-// const stock = new ItemPile("product_name", 10);
-// const adjustment = new ItemPile("product_name", -1);
-// console.log(stock)
-// console.log(adjustment)
-// stock.mergePile(adjustment);
-
-// console.log(stock);
-
+const editProductFormHandler = async (event) => {
+    event.preventDefault();
+  
+    const id = document.querySelector('#product-id').value;
+    const price = document.querySelector('#priceInput').value;
+    const unit = document.querySelector('#unitInput').value;
+    const par = document.querySelector('#parInput').value;
+    const stock = document.querySelector('#stockInput').value;
+  
+    const response = await fetch(`/api/products/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ price, unit, par, stock }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  
+    if (response.ok) {
+      document.location.replace('/dashboard');
+    } else {
+      alert('Failed to update product');
+    }
+  };
+  
+  const editProductForm = document.querySelector('#editProductForm');
+  if (editProductForm) {
+    editProductForm.addEventListener('submit', editProductFormHandler);
+  }
 
