@@ -11,7 +11,7 @@ const newCategoryFormHandler = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace("/")
+            document.location.replace("/new")
         } else {
             alert("Sign up failed");
         }
@@ -45,7 +45,7 @@ const newProductFormHandler = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace("/")
+            document.location.replace("/new")
         } else {
             alert("Sign up failed");
         }

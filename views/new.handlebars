@@ -1,7 +1,7 @@
 <main class="container mt-4" style="padding-left: 50px;">
   <div class="row">
     <div class="col-md-4 mb-4">
-      <h1>New Category Form</h1>
+      <h4>New Category Form</h4>
       <form method="post" id="category-form">
         <div class="mb-2">
           <label for="category_name" class="form-label">Category Name:</label>
@@ -9,8 +9,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-<br>
-<h1>New Product Form</h1>
+<h4>New Product Form</h4>
       <form method="post" id="product-form">
         <div class="mb-3">
           <label for="product_name" class="form-label">Product Name:</label>
@@ -40,9 +39,9 @@
       </form>
     </div>
 <div class="col-md-4 mt-4">
-<h2>Inventory Overview:</h2>
+<h4>Inventory Overview:</h4>
   <div class="mb-1">
-    <div class="card" style="padding-left: 10px; max-height: 750px; overflow-y: auto;">
+    <div class="card" style="padding-left: 10px; max-height: 700px; overflow-y: auto;">
       {{#each category}}
         <h4 style="text-decoration: underline;">{{category_name}}</h4>
         <p>ID: {{id}}</p>
