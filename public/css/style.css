@@ -1,3 +1,14 @@
+.z-index-control {
+  z-index: 1; /* Adjust the value as needed */
+}
+.adjust {
+  z-index: 1; /* Adjust the value as needed */
+  position: relative;
+}
+.footer {
+  z-index: 3; /* Make sure this value is higher than the buttons */
+  position: relative;
+}
 /* mediaQueries: */
 
 @media screen and (min-width: 768px) {

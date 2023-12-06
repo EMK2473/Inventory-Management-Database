@@ -1,7 +1,11 @@
 <main class="container mt-5">
+  {{#if logged_in}}
+  {{else}}
         <div class="col-md-12 mb-3 text-center">
-        <p>Please <a class="nav-link" href="/login">Login</a></p>
+        <p><a class="nav-link" style="border: 1px solid #ccc; padding: 10px;" href="/login">Please Login</a></p>
       </div>
+      {{/if}}
+      <h2>PRODUCTS:</h2>
     <div class="dashboard-background">
       <div class="row">
         {{#each category}}

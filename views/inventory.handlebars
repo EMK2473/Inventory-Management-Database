@@ -14,7 +14,6 @@
                 {{#each products}}
                   <div class="product mb-3" style="border: 1px solid #ccc; padding: 10px;">
                     <p><h5>{{product_name}}</h5>
-                    {{!-- <p>{{id}}</p> --}}
                     <h6>Price: ${{price}} / {{unit}}</h6> 
                     <h6>Par: {{par}}</h6>
                     <h6>Stock: {{stock}} <br>
@@ -23,40 +22,49 @@
                       {{#if (gt stock par)}} <p style="color:rgb(199, 201, 74)"><i class="bi bi-exclamation-octagon-fill"></i><b> OVER PAR</b></p>{{/if}}
                       {{#if (eq stock par)}} <p style="color:rgb(0, 255, 13);"><i class="bi bi-check-circle-fill"></i><b> On Par</b></p>{{/if}}
                   </div>
-                  <div class="product" style="border: 1px solid #ccc; padding: 10px;">
-                    <div>
-                    <label for="quantity" class="mb-3">Stock:</label>
-                    <input type="number" id="quantity" min="-64" value="1" max="64" required style="width: 75px;" class="mb-3">
-                    <button type="button" class="mb-3 adjust" data-product-id="{{id}}" data-key="stock">Adjust Stock</button>
-                    </div>
-                    <div>
-                    <label for="price" class="mb-3">Price:</label>
-                    <input type="number" id="price" min="-64" value="{{price}}" max="64" required style="width: 75px;" class="mb-3">
-                    <button type="button" class="mb-3 adjust" data-product-id="{{id}}" data-key="price">Adjust Price</button>
-                    </div>
-                     <div>
-                    <label for="unit" class="mb-3">Unit:</label>
-                    <input type="string" id="unit" min="-64" value="{{unit}}" max="64" required style="width: 75px;" class="mb-3">
-                    <button type="button" class="mb-3 adjust" data-product-id="{{id}}" data-key="unit">Adjust Unit</button>
-                    </div>
-                    <div>
-                    <label for="par" class="mb-3">Par:</label>
-                    <input type="number" id="par" min="-64" value="{{par}}" max="64" required style="width: 75px;" class="mb-3">
-                    <button type="button" class="mb-3 adjust" data-product-id="{{id}}" data-key="par">Adjust par</button>
-                    <div class="text-end">
-                    <button type="button" class="btn btn-danger btn-sm mb-3 delete-product" data-product-id="{{id}}">Delete</button>
-                    </div>
-                  </div>
-                  </div>
-                {{/each}}
-              </div>
-            </div>
-          </div>
-        {{/each}}
-      </div>
-      {{else}}
-      <div class="col-md-3 mb-3 text-center">
-        <p>Please <a class="nav-link" href="/login">Login</a></p>
-      </div>
-  {{/if}}
+    <div class="product" style="border: 1px solid #ccc; padding: 10px;">
+     <div class="mb-3">
+        <label for="quantity" class="form-label">Stock:</label>
+        <div class="input-group">
+            <input type="number" id="quantity" min="-64" value="1" max="64" required style="width: 75px;" class="form-control">
+            <button type="button" class="btn btn-primary adjust" data-product-id="{{id}}" data-key="stock">Adjust Stock</button>
+        </div>
+     </div>
+     <div class="mb-3">
+        <label for="price" class="form-label">Price:</label>
+        <div class="input-group">
+            <input type="number" id="price" min="-64" value="{{price}}" max="64" required style="width: 75px;" class="form-control">
+            <button type="button" class="btn btn-primary adjust" data-product-id="{{id}}" data-key="price">Adjust Price</button>
+        </div>
+     </div>
+     <div class="mb-3">
+        <label for="unit" class="form-label">Unit:</label>
+        <div class="input-group">
+            <input type="text" id="unit" min="-64" value="{{unit}}" max="64" required style="width: 75px;" class="form-control">
+            <button type="button" class="btn btn-primary adjust" data-product-id="{{id}}" data-key="unit">Adjust Unit</button>
+        </div>
+     </div>
+     <div class="mb-3">
+        <label for="par" class="form-label">Par:</label>
+        <div class="input-group">
+            <input type="number" id="par" min="-64" value="{{par}}" max="64" required style="width: 75px;" class="form-control">
+            <button type="button" class="btn btn-primary adjust" data-product-id="{{id}}" data-key="par">Adjust Par</button>
+        </div>
+     </div>
+
+     <div class="text-end">
+        <button type="button" class="btn btn-danger btn-sm mb-3 delete-product" data-product-id="{{id}}">Delete</button>
+     </div>
+    </div>
+{{/each}}
+</div>
+</div>
+</div>
+{{/each}}
+</div>
+{{else}}
+<div class="col-md-3 mb-3 text-center">
+  <p>Please <a class="nav-link" href="/login">Login</a></p>
+</div>
+{{/if}}
 </main>
