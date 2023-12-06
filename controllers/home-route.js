@@ -23,7 +23,7 @@ router.get("/signup", async (req, res) => {
 });
 
 // get all categories and render categories.handlebars
-router.get("/", async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
     try {
       const categoryData = await Category.findAll({
         include: [{ model: Product, attributes: ["product_name", "price", "stock", "par", "unit" ] }],
@@ -40,8 +40,7 @@ router.get("/", async (req, res) => {
   });
 
 // get all products at orders.handelbars
-// not working, finish development 
-router.get("/adjust", async (req, res) => {
+router.get("/adjust", withAuth, async (req, res) => {
   try {
     const categoryData = await Category.findAll({
       include: [{ model: Product, attributes: ["product_name", "price", "stock", "par", "unit", "id" ] }],
@@ -58,7 +57,7 @@ router.get("/adjust", async (req, res) => {
 });
 
 //
-router.get("/new", async (req, res) => {
+router.get("/new", withAuth, async (req, res) => {
   try {
     const categoryData = await Category.findAll({
       include: [{ model: Product, attributes: ["product_name", "price", "stock", "par", "unit", "id" ] }],
@@ -73,8 +72,6 @@ router.get("/new", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-
 
 // get login view if not logged in, else redirect to dashboard
 router.get("/login", async (req, res) => {
