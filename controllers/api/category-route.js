@@ -38,7 +38,7 @@ router.get("/:id", async (req, res) => {
   });
 
 // post new category
-router.post("/new", async (req, res) => {
+router.post("/new", withAuth, async (req, res) => {
   try {
     const newCategory = await Category.create(req.body);
     res.status(200).json({category: newCategory, message: `Category ${newCategory.category_name} Created!`});
@@ -48,7 +48,7 @@ router.post("/new", async (req, res) => {
 });
 
 // put/update existing Category
-router.put("/:id", async (req, res) => {
+router.put("/:id", withAuth, async (req, res) => {
   try {
     console.log("Request Body:", req.body);
     console.log("Category ID:", req.params.id);
@@ -68,7 +68,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // delete category
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", withAuth, async (req, res) => {
   try {
     const categoryToDelete = await Category.findByPk(req.params.id);
     if (!categoryToDelete) {
