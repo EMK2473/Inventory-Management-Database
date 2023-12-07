@@ -9,6 +9,7 @@
   z-index: 3; /* Make sure this value is higher than the buttons */
   position: relative;
 }
+
 /* mediaQueries: */
 
 @media screen and (min-width: 768px) {
