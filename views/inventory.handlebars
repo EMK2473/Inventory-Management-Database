@@ -1,21 +1,4 @@
-<main class="container mt-5">
-<div class="container">
-  <div class="row justify-content-around mb-2">
-    {{!-- <div class="col-md-4 text-center mb-3">
-      <h4 style="color: rgb(228, 114, 0); margin-left: -175px;"><i class="bi bi-exclamation-diamond-fill"></i> = Under Par</h4>
-    </div> --}}
-    {{!-- <div class="col-md-4 text-center mb-3">
-      <h4 style="color: rgb(241, 227, 76); margin-left: -175px;"><i class="bi bi-exclamation-octagon-fill"></i> = Over Par</h4>
-    </div>
-    <div class="col-md-4 text-center mb-3">
-      <h4 style="color: rgb(0, 255, 13); margin-left: -175px;"><i class="bi bi-check-circle-fill"></i> = On Par</h4>
-    </div>
-        <div class="col-md-4 text-center mb-3">
-      <h4 style="color:rgb(255, 0, 0); margin-left: -175px;"><i class="bi bi-exclamation-triangle-fill"></i><b> = Critical</b></h4>
-      <h6 style="color:rgb(252, 252, 252); margin-left: -175px;">(> or < 30% of Par)</or></h6>
-    </div> --}}
-  </div>
-</div>
+<main class="container mt-5" style="position: relative; z-index: 1;">
   {{#if logged_in}}
     <div class="dashboard-background">
       <div class="row">
@@ -29,33 +12,16 @@
               </div>
               <div class="card-body text-dark post-background adjust-parent">
                 {{#each products}}
-                  <div class="product mb-3" style="border: 1px solid #ccc; padding: 10px;">
+                  <div class="product mb-3" style="border: 1px solid lightblue; padding: 10px;">
+                    {{!-- <img src="{{image}}" alt="{{product_name}}" style="max-width: 50%; max-height: 100px;"> --}}
                     <p><h5>{{product_name}}</h5>
                     <h6>Price: ${{price}} / {{unit}}</h6> 
                     <h6>Par: {{par}}</h6>
                     <h6>Stock: {{stock}} <br>
                     <br>
-                              <div class="d-flex">
-            {{#if (lt stock par)}} 
-              <p class="mr-3"><h2 style="color: rgb(228, 0, 0)"><i class="bi bi-exclamation-diamond-fill"></i></h2></p>
-            {{/if}}
-            {{#if (gt stock par)}} 
-              <h2 class="mr-3" style="color:rgb(123, 241, 76)"><i class="bi bi-check-circle-fill"></i></h2>
-            {{/if}}
-            {{#if (eq stock par)}} 
-              <h2 class="mr-3" style="color:rgb(0, 255, 13);"><i class="bi bi-check-circle-fill"></i></h2>
-            {{/if}}
-            {{#if (critLow par stock)}} 
-              <h2 style="color:rgb(255, 0, 0);"><i class="bi bi-exclamation-triangle-fill"></i></h2>
-            {{/if}}
-            {{!-- {{#if (critHigh par stock)}} 
-              <h2 style="color:rgb(255, 0, 0);"><i class="bi bi-exclamation-triangle-fill"></i></h2>
-            {{/if}}
-            {{#if (withInRange stock par)}} 
-              <h2 class="mr-3" style="color:rgb(0, 255, 13);"><i class="bi bi-check-circle"></i></h2>
-            {{/if}} --}}
-          </div>
-                       
+                      {{#if (lt stock par)}} <p style="color:red;"><i class="bi bi-exclamation-octagon"></i><b> LOW STOCK</b></p>{{/if}}
+                      {{#if (gt stock par)}} <p style="color:rgb(199, 201, 74)"><i class="bi bi-exclamation-octagon-fill"></i><b> OVER PAR</b></p>{{/if}}
+                      {{#if (eq stock par)}} <p style="color:rgb(0, 255, 13);"><i class="bi bi-check-circle-fill"></i><b> On Par</b></p>{{/if}}
                   </div>
     <div class="product" style="border: 1px solid #ccc; padding: 10px;">
      <div class="mb-3">
@@ -86,11 +52,10 @@
             <button type="button" class="btn btn-primary adjust" data-product-id="{{id}}" data-key="par">Adjust Par</button>
         </div>
      </div>
-{{#if req.session.isManager}}
+
      <div class="text-end">
         <button type="button" class="btn btn-danger btn-sm mb-3 delete-product" data-product-id="{{id}}">Delete</button>
      </div>
-     {{/if}}
     </div>
 {{/each}}
 </div>
