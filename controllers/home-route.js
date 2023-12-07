@@ -43,7 +43,7 @@ router.get("/", withAuth, async (req, res) => {
 router.get("/adjust", withAuth, async (req, res) => {
   try {
     const categoryData = await Category.findAll({
-      include: [{ model: Product, attributes: ["product_name", "price", "stock", "par", "unit", "id" ] }],
+      include: [{ model: Product, attributes: ["product_name", "price", "stock", "par", "unit", "image", "id" ] }],
     });
     const userData = await User.findAll({
       attributes: ["username", "isManager"],
