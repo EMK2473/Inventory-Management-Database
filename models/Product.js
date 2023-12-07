@@ -67,5 +67,3 @@ Product.init(
 module.exports = Product;
 
 
-// we need to fully develop what each Product's columns will contain
-// How to add image file to column

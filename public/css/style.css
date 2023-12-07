@@ -1,12 +1,12 @@
 .z-index-control {
-  z-index: 1; /* Adjust the value as needed */
+  z-index: 1; 
 }
 .adjust {
-  z-index: 1; /* Adjust the value as needed */
+  z-index: 1; 
   position: relative;
 }
 .footer {
-  z-index: 3; /* Make sure this value is higher than the buttons */
+  z-index: 3;
   position: relative;
 }
 

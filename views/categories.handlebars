@@ -5,7 +5,7 @@
         <p><a class="nav-link" style="border: 1px solid #17a2b8; padding: 10px;" href="/login">Please Login</a></p>
       </div>
       {{/if}}
-      <h2>PRODUCTS:</h2>
+      <h2>Inventory Overview:</h2>
     <div class="dashboard-background">
       <div class="row">
         {{#each category}}
@@ -13,16 +13,23 @@
             <div class="card">
               <div class="card-header" style="background-color: lightskyblue">
                 <h2 class="card-title">
-                  <h3>{{category_name}}</h3>
+                  <h3 style="text-decoration: underline;">{{category_name}}</h3>
                 </h2>
                 <img src="{{image}}" alt="{{category_name}} Image" style="max-width: 100%; max-height: 400px;">
               </div>
-              <div class="card-body text-dark post-background multiple-items" style="background-color: rgb(255, 255, 255);">
+              <div class="card-body text-dark post-background multiple-items" style="background-color: rgb(135, 135, 135);">
                 {{#each products}}
-                  <div class="product mb-3" style="background-color: lightskyblue;">
+                  <div class="product mb-3" style="background-color: rgb(255, 255, 255);">
                     <img src="{{image}}" alt="{{product_name}}" style="max-width: 50%; max-height: 100px;">
-                    <p><h5>{{product_name}}</h5>
+                    <p><h5 style="text-decoration: underline;">{{product_name}}</h5>
                     <h6>Price: ${{price}} / {{unit}}</h6> 
+                    <div class="d-flex">
+                  {{#if (withInRange stock par)}} 
+              <h2 class="mr-3" style="color:rgb(0, 255, 13);"><i class="bi bi-check-circle"></i> </h2>
+              {{else}}
+              <h2 class="mr-3" style="color:rgb(248, 149, 20);"><i class="bi bi-exclamation-circle"></i> </h2>
+                  {{/if}} 
+            </div>
                   </div>
                 {{/each}}
               </div>

@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
         include: [{ model: Product }],
       });
       if (categories.length === 0) {
-        return res.status(404).json({ message: "ERROR; No categories found!" });
+        return res.status(404).end();
       }
       const categoryNames = categories.map(category => category.category_name);
       res.status(200).json({
@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
     }
   });
 
-  // get a categories
+  // get a category
 router.get("/:id", async (req, res) => {
     try {
       const category = await Category.findByPk(req.params.id, {
@@ -50,16 +50,12 @@ router.post("/new", withAuth, async (req, res) => {
 // put/update existing Category
 router.put("/:id", withAuth, async (req, res) => {
   try {
-    // console.log("Request Body:", req.body);
-    // console.log("Category ID:", req.params.id);
     const [numOfUpdatedRows, updatedCategories] = await Category.update(req.body, {
       where: {
         id: req.params.id,
       },
       returning: true,
     });
-    // console.log("Number of Updated Rows:", numOfUpdatedRows);
-    // console.log("Updated Categories:", updatedCategories);
     return res.status(200).json(updatedCategories);
   } catch (err) {
     console.error(err);
@@ -68,7 +64,8 @@ router.put("/:id", withAuth, async (req, res) => {
 });
 
 // delete category
-router.delete("/:id", withAuth, async (req, res) => {
+// no withAuth, used for backend Insomnia until dev'd on front end
+router.delete("/:id", async (req, res) => {
   try {
     const categoryToDelete = await Category.findByPk(req.params.id);
     if (!categoryToDelete) {

@@ -1,24 +1,22 @@
-// importing packages and dependencies
 const express = require("express");
 const session = require("express-session");
 const routes = require("./controllers");
 const sequelize = require("./config/connection");
 const exphbs = require("express-handlebars");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
-const hbs = exphbs.create({ helpers: require("./utils/helper") }); // I think we can delete this!
 const app = express();
 const PORT = process.env.PORT || 3001;
 const handlebarsHelpers = require('./utils/helper'); 
 const Handlebars = require('handlebars');
-Handlebars.registerHelper('eq', handlebarsHelpers.eq);
-Handlebars.registerHelper('lt', handlebarsHelpers.lt);
-Handlebars.registerHelper('gt', handlebarsHelpers.gt);
-Handlebars.registerHelper('dif', handlebarsHelpers.dif);
-Handlebars.registerHelper('dif', handlebarsHelpers.critLow);
-Handlebars.registerHelper('dif', handlebarsHelpers.critHigh);
-Handlebars.registerHelper('dif', handlebarsHelpers.withInRange);
-
-// sess object
+const helpers = {
+  'eq': handlebarsHelpers.eq,
+  'lt': handlebarsHelpers.lt,
+  'gt': handlebarsHelpers.gt,
+  'dif': handlebarsHelpers.dif,
+  'critLow': handlebarsHelpers.critLow,
+  'critHigh': handlebarsHelpers.critHigh,
+  'withInRange': handlebarsHelpers.withInRange,
+};
 const sess = {
   secret: process.env.SECRET,
   cookie: {
@@ -31,7 +29,9 @@ const sess = {
   }),
 };
 
-// middleware
+Object.entries(helpers).forEach(([name, func]) => {
+  Handlebars.registerHelper(name, func);
+});
 app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -48,8 +48,7 @@ app.use(
 );
 app.use(routes);
 
-// startServer
-const startServer = async () => {
+const init = async () => {
   try {
     await sequelize.sync({ force: false });
     app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
@@ -58,5 +57,4 @@ const startServer = async () => {
   }
 };
 
-
-startServer();
+init();

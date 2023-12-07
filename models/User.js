@@ -6,13 +6,6 @@ class User extends Model {
   checkPassword(pWord) {
     return bcryptjs.compareSync(pWord, this.password);
   }
-
-  // static associate(models) {
-  //   this.belongsTo(models.Managers, {
-  //     foreignKey: "managerID",
-  //     as: "manager",
-  //   });
-  // }
 }
 User.init(
   {
