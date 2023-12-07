@@ -50,8 +50,6 @@ router.get("/adjust", withAuth, async (req, res) => {
     });
     const category = categoryData.map((product) => product.get({ plain: true }));
     const users = userData.map((user) => user.get({ plain: true }));
-
-    console.log(users)
     res.render("inventory", {
       category,
       users,
@@ -59,6 +57,7 @@ router.get("/adjust", withAuth, async (req, res) => {
       isManager: req.body.isManager
     });
     console.log('REQsess', req.session)
+    console.log('users', users)
   } catch (err) {
     res.status(500).json(err);
   }
