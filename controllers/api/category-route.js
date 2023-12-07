@@ -50,16 +50,16 @@ router.post("/new", withAuth, async (req, res) => {
 // put/update existing Category
 router.put("/:id", withAuth, async (req, res) => {
   try {
-    console.log("Request Body:", req.body);
-    console.log("Category ID:", req.params.id);
+    // console.log("Request Body:", req.body);
+    // console.log("Category ID:", req.params.id);
     const [numOfUpdatedRows, updatedCategories] = await Category.update(req.body, {
       where: {
         id: req.params.id,
       },
       returning: true,
     });
-    console.log("Number of Updated Rows:", numOfUpdatedRows);
-    console.log("Updated Categories:", updatedCategories);
+    // console.log("Number of Updated Rows:", numOfUpdatedRows);
+    // console.log("Updated Categories:", updatedCategories);
     return res.status(200).json(updatedCategories);
   } catch (err) {
     console.error(err);

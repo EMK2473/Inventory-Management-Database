@@ -42,7 +42,7 @@ router.get("/:id", async (req, res) => {
 
 // update/put product 
 router.put("/:id", async (req, res) => {  
-  console.log(req.body)
+  // console.log(req.body)
   try {
     req.body.stock ? 
     await Product.increment('stock', { by: req.body.stock, where: { id: req.params.id }, returning: true,}) : 

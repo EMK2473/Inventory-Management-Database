@@ -1,4 +1,7 @@
 module.exports = {
+  critLow: function (a,b) {
+    return ((a*.3) > b)
+  },
   dif: function (a,b) {
     return a - b
   },

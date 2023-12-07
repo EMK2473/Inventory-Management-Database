@@ -5,7 +5,7 @@ const { User, Product, Category } = require("../../models");
 router.get("/", async (req, res) => {
   try {
     const userData = await User.findAll();
-    console.log("userData:", userData);
+    // console.log("userData:", userData);
     res.json({ users: userData });
   } catch (err) {
     console.log(err);
@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id);
-    console.log("userData:", userData);
+    // console.log("userData:", userData);
     res.json({ users: userData });
   } catch (err) {
     console.log(err);
@@ -33,7 +33,7 @@ router.post("/signup", async (req, res) => {
     newUser.password = req.body.password;
     newUser.isManager = req.body.isManager;
     const userData = await newUser.save();
-    console.log("USERDATA", userData.id);
+    // console.log("USERDATA", userData.id);
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
@@ -68,16 +68,21 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
+      req.session.isManager;
       req.session.user = {
         username: userData.username
       };
-      const isManager = userData.isManager;
-      if (isManager) {
+      userData.isManager;
+      if (userData.isManager === true) {
         req.session.isManager = true;
       }
       res.status(200).json({ user: userData, message: "Logged in!" });
     });
-    console.log('REQ SESSIONS:', req.session)
+    console.log(userData.username)
+    console.log(userData)
+    console.log('SESSION:', req.session)
+    console.log('?ismanager?:', req.session.isManager)
+    console.log("userData t/f", userData.isManager)
   } catch (err) {
     res.status(400).json(err);
   }
@@ -102,16 +107,16 @@ router.delete("/:id", async (req, res) => {
 // put/update existing User
 router.put("/:id", async (req, res) => {
   try {
-    console.log("Request Body:", req.body);
-    console.log("User ID:", req.params.id);
+    // console.log("Request Body:", req.body);
+    // console.log("User ID:", req.params.id);
     const [numOfUpdatedRows, updatedUsers] = await User.update(req.body, {
       where: {
         id: req.params.id,
       },
       returning: true,
     });
-    console.log("Number of Updated Rows:", numOfUpdatedRows);
-    console.log("Updated Users:", updatedUsers);
+    // console.log("Number of Updated Rows:", numOfUpdatedRows);
+    // console.log("Updated Users:", updatedUsers);
     return res.status(200).json(updatedUsers);
   } catch (err) {
     console.error(err);
