@@ -5,15 +5,15 @@
         {{#each category}}
           <div class="col-md-5 mb-3">
             <div class="card">
-              <div class="card-header">
-                <h2 class="card-title">
+              <div class="card-header" style="background-color: lightskyblue">
+                <h2 class="card-title" >
                   <h3>{{category_name}}</h3>
                 </h2>
               </div>
-              <div class="card-body text-dark post-background adjust-parent">
+              <div class="card-body text-dark post-background adjust-parent" >
                 {{#each products}}
-                  <div class="product mb-3" style="border: 1px solid lightblue; padding: 10px;">
-                    {{!-- <img src="{{image}}" alt="{{product_name}}" style="max-width: 50%; max-height: 100px;"> --}}
+                  <div class="product mb-3" style="border: 1px solid lightblue; padding: 10px; background-color: lightskyblue">
+                    <img src="{{image}}" alt="{{product_name}}" style="max-width: 50%; max-height: 100px; ">
                     <p><h5>{{product_name}}</h5>
                     <h6>Price: ${{price}} / {{unit}}</h6> 
                     <h6>Par: {{par}}</h6>
@@ -23,7 +23,7 @@
                       {{#if (gt stock par)}} <p style="color:rgb(199, 201, 74)"><i class="bi bi-exclamation-octagon-fill"></i><b> OVER PAR</b></p>{{/if}}
                       {{#if (eq stock par)}} <p style="color:rgb(0, 255, 13);"><i class="bi bi-check-circle-fill"></i><b> On Par</b></p>{{/if}}
                   </div>
-    <div class="product" style="border: 1px solid #ccc; padding: 10px;">
+    <div class="product" style="border: 1px solid #ccc; padding: 10px; background-color: rgb(139, 140, 141)"">
      <div class="mb-3">
         <label for="quantity" class="form-label">Stock:</label>
         <div class="input-group">

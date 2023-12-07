@@ -7,7 +7,7 @@ const productData = [
     stock: 14,
     par: 15,
     category_id: 1,
-    image: "https://embed.widencdn.net/img/beef/0ihtghs7iy/exact/Brisket_Deckle%20Off.psd?keep=c&u=7fueml",
+    image: "https://hips.hearstapps.com/hmg-prod/images/delish-beef-brisket-1542063856.jpg?crop=0.600xw:0.901xh;0.189xw,0.0408xh&resize=980:*",
   },
   {
     product_name: 'Chuck Roll',
@@ -30,7 +30,7 @@ const productData = [
     price: 7.99,
     stock: 50,
     par: 45,
-    category_id: 3,
+    category_id: 1,
     image: "https://embed.widencdn.net/img/beef/4hh1pywcnj/exact/Grind_Fine_85.psd?keep=c&u=7fueml",
   }, 
   {

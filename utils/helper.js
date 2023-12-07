@@ -1,17 +1,8 @@
 module.exports = {
   withInRange: function(a,b) {
-    const lowerBound =  b - (b * 0.2);
-    const upperBound = b + (b * 0.2)
+    const lowerBound =  b - (b * 0.25);
+    const upperBound = b + (b * 0.25)
     return a >= lowerBound && a <= upperBound;
-  },
-  critHigh: function(a,b){
-    return (((a*.3) + a) < b)
-  },
-  critLow: function (a,b) {
-    return ((a*.3) > b)
-  },
-  dif: function (a,b) {
-    return a - b
   },
     eq: function (a,b) {
       return a===b
