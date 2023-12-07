@@ -40,7 +40,7 @@ router.get("/", withAuth, async (req, res) => {
   });
 
 // get all products at orders.handelbars
-router.get("/adjust", withAuth, async (req, res) => {
+router.get("/inventory", withAuth, async (req, res) => {
   try {
     const categoryData = await Category.findAll({
       include: [{ model: Product, attributes: ["product_name", "price", "stock", "par", "unit", "id", "image" ] }],

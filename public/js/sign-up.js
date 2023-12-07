@@ -1,11 +1,9 @@
-// decide and implement employee id?
-// could verify if manager or not
 const employeeSignupFormHandler = async (event) => {
     event.preventDefault();
 
     const username = document.querySelector("#username").value.trim();
-    // const managerId = document.querySelector("#managerID").value.trim();
     const password = document.querySelector("#password").value.trim();
+    // const managerId = document.querySelector("#managerID").value.trim();
 
     if (username && password) {
         const response = await fetch("/api/users/signup", {

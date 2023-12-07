@@ -2,11 +2,12 @@ const newCategoryFormHandler = async (event) => {
     event.preventDefault();
 
     const categoryName = document.querySelector("#category_name").value.trim();
+    const categoryImage = document.querySelector("#categoryImage").value.trim();
     if (categoryName) {
         console.log(categoryName)
         const response = await fetch("/api/categories/new", {
             method: "POST",
-            body: JSON.stringify({ category_name: categoryName }),
+            body: JSON.stringify({ category_name: categoryName, image: categoryImage }),
             headers: { "Content-Type": "application/json" },
         });
 
@@ -32,6 +33,7 @@ const newProductFormHandler = async (event) => {
     const unit = document.querySelector("#unit").value.trim();
     const par = document.querySelector("#par").value.trim();
     const category_id = document.querySelector("#category_id").value.trim();
+    const image = document.querySelector("#image").value.trim();
     if (productName) {
         console.log(productName)
         const response = await fetch("/api/products/new", {
@@ -40,7 +42,9 @@ const newProductFormHandler = async (event) => {
                 price: price,
                 unit: unit,
                 par: par,
-                category_id: category_id}),
+                category_id: category_id,
+                image: image
+            }),
             headers: { "Content-Type": "application/json" },
         });
 

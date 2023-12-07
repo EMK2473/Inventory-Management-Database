@@ -1,15 +1,25 @@
-<main class="container mt-4" style="padding-left: 50px;">
+<main class="container mt-4" style="padding-left: 250px;">
+  <h2>Create New Categories and Products:</h2>
+  <br>
   <div class="row">
     <div class="col-md-4 mb-4">
-      <h4>New Category Form</h4>
+            <div class="card" style="background-color: rgb(139, 140, 141);">
+              <div class="card-header">
+                <h2 class="card-title">
+      <h4 style="text-decoration: underline;">New Category Form</h4>
+                </h2>
       <form method="post" id="category-form">
         <div class="mb-2">
           <label for="category_name" class="form-label">Category Name:</label>
           <input type="text" class="form-control" id="category_name" required>
         </div>
+            <div class="mb-3">
+          <label for="categoryImage" class="form-label">Image (URL):</label>
+          <input type="text" class="form-control" id="categoryImage" name="categoryImage" required>
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-<h4>New Product Form</h4>
+<h4 style="text-decoration: underline;">New Product Form </h4>
       <form method="post" id="product-form">
         <div class="mb-3">
           <label for="product_name" class="form-label">Product Name:</label>
@@ -35,13 +45,22 @@
           <label for="category_id" class="form-label">Category ID:</label>
           <input type="text" class="form-control" id="category_id" name="category_id" required>
         </div>
+         <div class="mb-3">
+          <label for="image" class="form-label">Image (URL):</label>
+          <input type="text" class="form-control" id="image" name="image" required>
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
+    </div>
+    </div>
 <div class="col-md-4 mt-4">
+<div class="card">
+<div class="card-header" style="background-color: rgb(139, 140, 141);">
+<h2 class="card-title">
 <h4>Inventory Overview:</h4>
   <div class="mb-1">
-    <div class="card" style="padding-left: 10px; max-height: 700px; overflow-y: auto;">
+    <div class="card" style="padding-left: 10px; max-height: 700px; overflow-y: auto; ">
       {{#each category}}
         <h4 style="text-decoration: underline;">{{category_name}}</h4>
         <p>ID: {{id}}</p>
