@@ -7,12 +7,12 @@ class User extends Model {
     return bcryptjs.compareSync(pWord, this.password);
   }
 
-  static associate(models) {
-    this.belongsTo(models.Managers, {
-      foreignKey: "managerID",
-      as: "manager",
-    });
-  }
+  // static associate(models) {
+  //   this.belongsTo(models.Managers, {
+  //     foreignKey: "managerID",
+  //     as: "manager",
+  //   });
+  // }
 }
 User.init(
   {
@@ -34,11 +34,11 @@ User.init(
         len: [8],
       },
     },
-    // isManager: {
-    //   type: DataTypes.BOOLEAN,
-    //   allowNull: false,
-    //   defaultValue: true,
-    // },
+    isManager: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: false,
+    },
   },
   {
     hooks: {

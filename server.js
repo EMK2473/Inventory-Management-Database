@@ -14,6 +14,7 @@ Handlebars.registerHelper('eq', handlebarsHelpers.eq);
 Handlebars.registerHelper('lt', handlebarsHelpers.lt);
 Handlebars.registerHelper('gt', handlebarsHelpers.gt);
 Handlebars.registerHelper('dif', handlebarsHelpers.dif);
+Handlebars.registerHelper('dif', handlebarsHelpers.critLow);
 
 // sess object
 const sess = {

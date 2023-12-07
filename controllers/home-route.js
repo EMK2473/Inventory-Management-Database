@@ -29,7 +29,7 @@ router.get("/", withAuth, async (req, res) => {
         include: [{ model: Product, attributes: ["product_name", "price", "stock", "par", "unit" ] }],
       });
       const category = categoryData.map((product) => product.get({ plain: true }));
-      console.log(categoryData)
+      // console.log(categoryData)
       res.render("categories", {
         category,
         logged_in: req.session.logged_in,
@@ -45,12 +45,20 @@ router.get("/adjust", withAuth, async (req, res) => {
     const categoryData = await Category.findAll({
       include: [{ model: Product, attributes: ["product_name", "price", "stock", "par", "unit", "id" ] }],
     });
+    const userData = await User.findAll({
+      attributes: ["username", "isManager"],
+    });
     const category = categoryData.map((product) => product.get({ plain: true }));
-    console.log(categoryData)
+    const users = userData.map((user) => user.get({ plain: true }));
+
+    console.log(users)
     res.render("inventory", {
       category,
+      users,
       logged_in: req.session.logged_in,
+      isManager: req.body.isManager
     });
+    console.log('REQsess', req.session)
   } catch (err) {
     res.status(500).json(err);
   }
@@ -63,7 +71,7 @@ router.get("/new", withAuth, async (req, res) => {
       include: [{ model: Product, attributes: ["product_name", "price", "stock", "par", "unit", "id" ] }],
     });
     const category = categoryData.map((product) => product.get({ plain: true }));
-    console.log(categoryData)
+    // console.log(categoryData)
     res.render("new", {
       category,
       logged_in: req.session.logged_in,

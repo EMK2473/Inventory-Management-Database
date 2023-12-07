@@ -18,9 +18,10 @@
                     <h6>Par: {{par}}</h6>
                     <h6>Stock: {{stock}} <br>
                     <br>
-                      {{#if (lt stock par)}} <p style="color:red;"><i class="bi bi-exclamation-octagon"></i><b> LOW STOCK</b></p>{{/if}}
+                    {{#if (critLow par stock)}} <p style="color:rgb(255, 0, 0);"><i class="bi bi-exclamation-octagon"></i><b> Critical</b></p>{{/if}}
+                      {{#if (lt stock par)}} <p style="color:red;"></i><b> low stock</b></p>{{/if}}
                       {{#if (gt stock par)}} <p style="color:rgb(199, 201, 74)"><i class="bi bi-exclamation-octagon-fill"></i><b> OVER PAR</b></p>{{/if}}
-                      {{#if (eq stock par)}} <p style="color:rgb(0, 255, 13);"><i class="bi bi-check-circle-fill"></i><b> On Par</b></p>{{/if}}
+                      {{#if (eq stock par)}} <p style="color:rgb(0, 255, 13);"><i class="bi bi-check-circle-fill"></i></p>{{/if}}
                   </div>
     <div class="product" style="border: 1px solid #ccc; padding: 10px;">
      <div class="mb-3">
@@ -51,10 +52,11 @@
             <button type="button" class="btn btn-primary adjust" data-product-id="{{id}}" data-key="par">Adjust Par</button>
         </div>
      </div>
-
+{{#if req.session.isManager}}
      <div class="text-end">
         <button type="button" class="btn btn-danger btn-sm mb-3 delete-product" data-product-id="{{id}}">Delete</button>
      </div>
+     {{/if}}
     </div>
 {{/each}}
 </div>
