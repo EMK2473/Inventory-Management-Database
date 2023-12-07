@@ -13,6 +13,10 @@ Category.init(
     },
     category_name: {
       type: DataTypes.STRING,
+    },
+    image: {
+      type: DataTypes.STRING, 
+      allowNull: true,
     }
   },
   {

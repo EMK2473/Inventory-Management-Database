@@ -2,13 +2,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Warehouse</title>
+    <title>Inventory Manager</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"/>
-    <link rel="stylesheet" 
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
+      integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <link rel="stylesheet" type="text/css" href="/public/css/style.css" />
   </head>
@@ -16,7 +25,7 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand fs-2" href="/">Your Warehouse</a>
+          <a class="navbar-brand fs-2" href="/">Inventory Manager</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -24,24 +33,29 @@
             data-bs-target="#navbarNav"
             aria-controls="navbarNav"
             aria-expanded="false"
-            aria-label="Toggle navigation">
-             <span class="navbar-toggler-icon"></span>
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <div
+            class="collapse navbar-collapse d-flex justify-content-end pe-3"
+            style="max-width: 25%"
+            id="navbarNav"
+          >
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="/">Overview</a>
+                <a class="nav-link" href="/">Products</a>
               </li>
               {{#if logged_in}}
-                   <li class="nav-item">
+                <li class="nav-item">
                   <a class="nav-link" href="/adjust">Adjust</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/new">New</a>
                 </li>
-                 <li class="nav-item">
+                <li class="nav-item">
                   <a class="nav-link" href="#" id="employee-logout">Logout</a>
-                </li>  
+                </li>
               {{else}}
                 <li class="nav-item">
                   <a class="nav-link" href="/login">Login</a>
@@ -60,7 +74,8 @@
     </div>
     <footer
       class="bg-dark text-white py-3 footer"
-      style="position: fixed; bottom: 0; width: 100%;">
+      style="position: fixed; bottom: 0; width: 100%; z-index: 9999;"
+    >
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-6 text-center">
@@ -69,25 +84,33 @@
         </div>
       </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
-    <script src="/js/new.js" ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    ></script>
+    <script src="/js/new.js"></script>
     <script src="/js/inventory.js"></script>
     <script src="/js/log-in.js"></script>
     <script src="/js/log-out.js"></script>
     <script src="/js/sign-up.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+      integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    >
     </script>
     <script type="text/javascript">
-            $('.multiple-items').slick({
-            infinite: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            vertical: true,
-            arrows: true,
-            accessibility: true,
-            verticalSwiping: true});
+      $('.multiple-items').slick({ infinite: true, slidesToShow: 1,
+      slidesToScroll: 1, vertical: true, arrows: true, accessibility: true,
+      verticalSwiping: true});
     </script>
   </body>
 </html>

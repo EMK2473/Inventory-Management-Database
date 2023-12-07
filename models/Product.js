@@ -44,6 +44,10 @@ Product.init(
       allowNull: false,
       defaultValue: 10,
     },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     category_id: {
       type: DataTypes.INTEGER,
       references: {
